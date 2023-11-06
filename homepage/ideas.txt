@@ -1,4 +1,0 @@
-add a color picker to change color of the page
-add a video
-add an external link
-touch grass buttob
