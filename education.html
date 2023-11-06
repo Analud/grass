@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let body = document.querySelector('body');
+                let input = document.querySelector('input');
+                let text = document.querySelector('p');
+                input.addEventListener('input', function() {
+                    body.style.backgroundColor = input.value;
+                    let hexrgb = input.value
+                    let rgbValues = hexToRgb(hexrgb);
+                    console.log(input.value);
+                    console.log(rgbValues);
+                    // Calculate the complementary color
+                    let complementaryColor = `rgb(${255 - rgbValues.r}, ${255 - rgbValues.g}, ${255 - rgbValues.b})`;
+                    console.log(complementaryColor)
+                    // Set the background color of the complementaryColorDiv
+                    text.style.color = complementaryColor;
+                });
+                function hexToRgb(hex) {
+                    // Remove the hash if it exists
+                    hex = hex.replace(/^#/, '');
+
+                    // Parse the hex values to integers
+                    let bigint = parseInt(hex, 16);
+
+                    // Extract RGB values
+                    let r = (bigint >> 16) & 255;
+                    let g = (bigint >> 8) & 255;
+                    let b = bigint & 255;
+
+                    return { r, g, b };
+                }
+            });
+        </script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Random Name</title>
+    </head>
+    <body>
+        <header class="navbar">
+            <div class="container p-2">
+                <h1>Random Name</h1>
+                <span class="gap-2 d-lg-flex justify-content-md-end p-2">
+                    <a href="/index.html"></ahref><button class="btn btn1">Home</button></a>
+                    <a href="/education.html"><button class="btn btn1">Education</button></a>
+                    <a href="/career.html"><button class="btn btn1">Career</button></a>
+                    <a href="/form.html"><button class="btn btn1">Get in touch</button></a>
+                </span>
+            </div>
+        </header>
+        <p class="padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <div class="centered">
+            <input type="color" id="clr"> <!--add functionality to change color of page-->
+        </div>
+    </body>
+</html>
